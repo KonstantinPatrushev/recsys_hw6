@@ -7,6 +7,9 @@ global PageRank and user-seeded Personalized PageRank (PPR) on the user–movie 
 MovieLens-100k training ratings, computed with TensorFlow.js, and compared with popularity and
 matrix factorization under one retrieval protocol.
 
+The assignment text is the starter's readme, kept unchanged as [`baseline/readme.md`](baseline/readme.md)
+(on a case-insensitive file system it cannot sit next to this `README.md`).
+
 ## Run
 
 The data layer uses `fetch`, so serve the folder over HTTP:
