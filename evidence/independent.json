@@ -1,0 +1,641 @@
+{
+ "graph": {
+  "nUsers": 943,
+  "nMovies": 1611,
+  "nodes": 2554,
+  "positiveEdges": 45602,
+  "zeroDegreeUsers": 1,
+  "zeroDegreeMovies": 253
+ },
+ "mfCheckpoint": {
+  "source": "hw5/evidence/run_main.json",
+  "epoch": 2,
+  "valRMSE": 1.0088364478298
+ },
+ "sweep": [
+  {
+   "alpha": 0.5,
+   "recall": 0.11448315913208877
+  },
+  {
+   "alpha": 0.7,
+   "recall": 0.1047969507641043
+  },
+  {
+   "alpha": 0.85,
+   "recall": 0.09002077155336492
+  },
+  {
+   "alpha": 0.95,
+   "recall": 0.07375030387909676
+  }
+ ],
+ "selectedAlpha": 0.5,
+ "test": {
+  "popularity": {
+   "recall": 0.07602291343770759,
+   "cohort": 861,
+   "meanListPopularity": 271.99686411149816
+  },
+  "pagerank": {
+   "recall": 0.07969324149418144,
+   "cohort": 861,
+   "meanListPopularity": 257.820325203252
+  },
+  "ppr": {
+   "recall": 0.11218853219486066,
+   "cohort": 861,
+   "meanListPopularity": 244.20673635307733
+  },
+  "mf_hw5": {
+   "recall": 0.01751098588946886,
+   "cohort": 861,
+   "meanListPopularity": 43.50708478513361
+  }
+ },
+ "reportUsers": {
+  "655": {
+   "popularity": [
+    {
+     "movieId": 173,
+     "title": "Princess Bride, The (1987)",
+     "score": 222,
+     "popularity": 222
+    },
+    {
+     "movieId": 168,
+     "title": "Monty Python and the Holy Grail (1974)",
+     "score": 211,
+     "popularity": 211
+    },
+    {
+     "movieId": 9,
+     "title": "Dead Man Walking (1995)",
+     "score": 182,
+     "popularity": 182
+    },
+    {
+     "movieId": 427,
+     "title": "To Kill a Mockingbird (1962)",
+     "score": 166,
+     "popularity": 166
+    },
+    {
+     "movieId": 194,
+     "title": "Sting, The (1973)",
+     "score": 161,
+     "popularity": 161
+    },
+    {
+     "movieId": 496,
+     "title": "It's a Wonderful Life (1946)",
+     "score": 153,
+     "popularity": 153
+    },
+    {
+     "movieId": 151,
+     "title": "Willy Wonka and the Chocolate Factory (1971)",
+     "score": 152,
+     "popularity": 152
+    },
+    {
+     "movieId": 180,
+     "title": "Apocalypse Now (1979)",
+     "score": 151,
+     "popularity": 151
+    },
+    {
+     "movieId": 14,
+     "title": "Postino, Il (1994)",
+     "score": 120,
+     "popularity": 120
+    },
+    {
+     "movieId": 95,
+     "title": "Aladdin (1992)",
+     "score": 119,
+     "popularity": 119
+    }
+   ],
+   "pagerank": [
+    {
+     "movieId": 9,
+     "title": "Dead Man Walking (1995)",
+     "score": 0.0011652064582064192,
+     "popularity": 182
+    },
+    {
+     "movieId": 173,
+     "title": "Princess Bride, The (1987)",
+     "score": 0.0011318929226600916,
+     "popularity": 222
+    },
+    {
+     "movieId": 168,
+     "title": "Monty Python and the Holy Grail (1974)",
+     "score": 0.0010912159622300647,
+     "popularity": 211
+    },
+    {
+     "movieId": 748,
+     "title": "Saint, The (1997)",
+     "score": 0.0010162061353804824,
+     "popularity": 115
+    },
+    {
+     "movieId": 307,
+     "title": "Devil's Advocate, The (1997)",
+     "score": 0.0009286065669487783,
+     "popularity": 86
+    },
+    {
+     "movieId": 151,
+     "title": "Willy Wonka and the Chocolate Factory (1971)",
+     "score": 0.0009125532404301142,
+     "popularity": 152
+    },
+    {
+     "movieId": 427,
+     "title": "To Kill a Mockingbird (1962)",
+     "score": 0.0009109163147185525,
+     "popularity": 166
+    },
+    {
+     "movieId": 14,
+     "title": "Postino, Il (1994)",
+     "score": 0.0008738890595615385,
+     "popularity": 120
+    },
+    {
+     "movieId": 194,
+     "title": "Sting, The (1973)",
+     "score": 0.0008717248818339248,
+     "popularity": 161
+    },
+    {
+     "movieId": 180,
+     "title": "Apocalypse Now (1979)",
+     "score": 0.00080991943442388,
+     "popularity": 151
+    }
+   ],
+   "ppr": [
+    {
+     "movieId": 9,
+     "title": "Dead Man Walking (1995)",
+     "score": 0.00034256332120130464,
+     "popularity": 182
+    },
+    {
+     "movieId": 168,
+     "title": "Monty Python and the Holy Grail (1974)",
+     "score": 0.0003153655818771404,
+     "popularity": 211
+    },
+    {
+     "movieId": 173,
+     "title": "Princess Bride, The (1987)",
+     "score": 0.0003128987074900189,
+     "popularity": 222
+    },
+    {
+     "movieId": 427,
+     "title": "To Kill a Mockingbird (1962)",
+     "score": 0.0003019574094151122,
+     "popularity": 166
+    },
+    {
+     "movieId": 180,
+     "title": "Apocalypse Now (1979)",
+     "score": 0.00026472630213990263,
+     "popularity": 151
+    },
+    {
+     "movieId": 194,
+     "title": "Sting, The (1973)",
+     "score": 0.0002601781995500227,
+     "popularity": 161
+    },
+    {
+     "movieId": 14,
+     "title": "Postino, Il (1994)",
+     "score": 0.00025810594977122614,
+     "popularity": 120
+    },
+    {
+     "movieId": 496,
+     "title": "It's a Wonderful Life (1946)",
+     "score": 0.00022741564125726264,
+     "popularity": 153
+    },
+    {
+     "movieId": 137,
+     "title": "Big Night (1996)",
+     "score": 0.0002269959691298799,
+     "popularity": 105
+    },
+    {
+     "movieId": 151,
+     "title": "Willy Wonka and the Chocolate Factory (1971)",
+     "score": 0.0002094747347296216,
+     "popularity": 152
+    }
+   ],
+   "mf_hw5": [
+    {
+     "movieId": 1503,
+     "title": "Gold Diggers: The Secret of Bear Mountain (1995)",
+     "score": 4.653256220821047,
+     "popularity": 3
+    },
+    {
+     "movieId": 1203,
+     "title": "Top Hat (1935)",
+     "score": 4.369149160334444,
+     "popularity": 10
+    },
+    {
+     "movieId": 488,
+     "title": "Sunset Blvd. (1950)",
+     "score": 4.357013349955153,
+     "popularity": 43
+    },
+    {
+     "movieId": 862,
+     "title": "Jingle All the Way (1996)",
+     "score": 4.346617444912257,
+     "popularity": 2
+    },
+    {
+     "movieId": 1336,
+     "title": "Kazaam (1996)",
+     "score": 4.2984760634933465,
+     "popularity": 0
+    },
+    {
+     "movieId": 1449,
+     "title": "Pather Panchali (1955)",
+     "score": 4.230107013752615,
+     "popularity": 7
+    },
+    {
+     "movieId": 1502,
+     "title": "Naked in New York (1994)",
+     "score": 4.22096970143325,
+     "popularity": 0
+    },
+    {
+     "movieId": 1558,
+     "title": "Aparajito (1956)",
+     "score": 4.213436493133175,
+     "popularity": 4
+    },
+    {
+     "movieId": 1142,
+     "title": "When We Were Kings (1996)",
+     "score": 4.208103106030563,
+     "popularity": 29
+    },
+    {
+     "movieId": 1092,
+     "title": "Dear God (1996)",
+     "score": 4.1838199051223555,
+     "popularity": 0
+    }
+   ]
+  },
+  "895": {
+   "popularity": [
+    {
+     "movieId": 174,
+     "title": "Raiders of the Lost Ark (1981)",
+     "score": 312,
+     "popularity": 312
+    },
+    {
+     "movieId": 98,
+     "title": "Silence of the Lambs, The (1991)",
+     "score": 308,
+     "popularity": 308
+    },
+    {
+     "movieId": 127,
+     "title": "Godfather, The (1972)",
+     "score": 308,
+     "popularity": 308
+    },
+    {
+     "movieId": 258,
+     "title": "Contact (1997)",
+     "score": 307,
+     "popularity": 307
+    },
+    {
+     "movieId": 286,
+     "title": "English Patient, The (1996)",
+     "score": 279,
+     "popularity": 279
+    },
+    {
+     "movieId": 56,
+     "title": "Pulp Fiction (1994)",
+     "score": 263,
+     "popularity": 263
+    },
+    {
+     "movieId": 172,
+     "title": "Empire Strikes Back, The (1980)",
+     "score": 261,
+     "popularity": 261
+    },
+    {
+     "movieId": 300,
+     "title": "Air Force One (1997)",
+     "score": 235,
+     "popularity": 235
+    },
+    {
+     "movieId": 7,
+     "title": "Twelve Monkeys (1995)",
+     "score": 234,
+     "popularity": 234
+    },
+    {
+     "movieId": 79,
+     "title": "Fugitive, The (1993)",
+     "score": 230,
+     "popularity": 230
+    }
+   ],
+   "pagerank": [
+    {
+     "movieId": 258,
+     "title": "Contact (1997)",
+     "score": 0.002375186517601337,
+     "popularity": 307
+    },
+    {
+     "movieId": 286,
+     "title": "English Patient, The (1996)",
+     "score": 0.0022912525644246955,
+     "popularity": 279
+    },
+    {
+     "movieId": 313,
+     "title": "Titanic (1997)",
+     "score": 0.002063426554480847,
+     "popularity": 219
+    },
+    {
+     "movieId": 300,
+     "title": "Air Force One (1997)",
+     "score": 0.002003419506746231,
+     "popularity": 235
+    },
+    {
+     "movieId": 288,
+     "title": "Scream (1996)",
+     "score": 0.0018683738480013209,
+     "popularity": 226
+    },
+    {
+     "movieId": 127,
+     "title": "Godfather, The (1972)",
+     "score": 0.0018052444705323977,
+     "popularity": 308
+    },
+    {
+     "movieId": 302,
+     "title": "L.A. Confidential (1997)",
+     "score": 0.0017981338847428156,
+     "popularity": 202
+    },
+    {
+     "movieId": 269,
+     "title": "Full Monty, The (1997)",
+     "score": 0.0016812993873324856,
+     "popularity": 189
+    },
+    {
+     "movieId": 174,
+     "title": "Raiders of the Lost Ark (1981)",
+     "score": 0.0015527263936934831,
+     "popularity": 312
+    },
+    {
+     "movieId": 98,
+     "title": "Silence of the Lambs, The (1991)",
+     "score": 0.00152554358475645,
+     "popularity": 308
+    }
+   ],
+   "ppr": [
+    {
+     "movieId": 258,
+     "title": "Contact (1997)",
+     "score": 0.0008358719405720962,
+     "popularity": 307
+    },
+    {
+     "movieId": 286,
+     "title": "English Patient, The (1996)",
+     "score": 0.0007480210625397198,
+     "popularity": 279
+    },
+    {
+     "movieId": 300,
+     "title": "Air Force One (1997)",
+     "score": 0.0007209507825081675,
+     "popularity": 235
+    },
+    {
+     "movieId": 127,
+     "title": "Godfather, The (1972)",
+     "score": 0.000688067536528491,
+     "popularity": 308
+    },
+    {
+     "movieId": 313,
+     "title": "Titanic (1997)",
+     "score": 0.0005900567644801873,
+     "popularity": 219
+    },
+    {
+     "movieId": 237,
+     "title": "Jerry Maguire (1996)",
+     "score": 0.0005580623348784816,
+     "popularity": 217
+    },
+    {
+     "movieId": 288,
+     "title": "Scream (1996)",
+     "score": 0.0005574955426452186,
+     "popularity": 226
+    },
+    {
+     "movieId": 269,
+     "title": "Full Monty, The (1997)",
+     "score": 0.0005219624324801302,
+     "popularity": 189
+    },
+    {
+     "movieId": 7,
+     "title": "Twelve Monkeys (1995)",
+     "score": 0.00047930944680847214,
+     "popularity": 234
+    },
+    {
+     "movieId": 121,
+     "title": "Independence Day (ID4) (1996)",
+     "score": 0.0004755636024746552,
+     "popularity": 207
+    }
+   ],
+   "mf_hw5": [
+    {
+     "movieId": 1558,
+     "title": "Aparajito (1956)",
+     "score": 4.9883616891877285,
+     "popularity": 4
+    },
+    {
+     "movieId": 172,
+     "title": "Empire Strikes Back, The (1980)",
+     "score": 4.913974260378312,
+     "popularity": 261
+    },
+    {
+     "movieId": 127,
+     "title": "Godfather, The (1972)",
+     "score": 4.9108631413539845,
+     "popularity": 308
+    },
+    {
+     "movieId": 178,
+     "title": "12 Angry Men (1957)",
+     "score": 4.86108207009237,
+     "popularity": 93
+    },
+    {
+     "movieId": 285,
+     "title": "Secrets & Lies (1996)",
+     "score": 4.849131655693756,
+     "popularity": 121
+    },
+    {
+     "movieId": 32,
+     "title": "Crumb (1994)",
+     "score": 4.8097654039762245,
+     "popularity": 46
+    },
+    {
+     "movieId": 1142,
+     "title": "When We Were Kings (1996)",
+     "score": 4.782101814989327,
+     "popularity": 29
+    },
+    {
+     "movieId": 134,
+     "title": "Citizen Kane (1941)",
+     "score": 4.7256712694897605,
+     "popularity": 143
+    },
+    {
+     "movieId": 850,
+     "title": "Perfect Candidate, A (1996)",
+     "score": 4.713914608453218,
+     "popularity": 3
+    },
+    {
+     "movieId": 1114,
+     "title": "Faithful (1996)",
+     "score": 4.706565205352776,
+     "popularity": 4
+    }
+   ]
+  }
+ },
+ "vsPage": {
+  "selectedAlpha": {
+   "page": 0.5,
+   "independent": 0.5
+  },
+  "sweep": [
+   {
+    "alpha": 0.5,
+    "page": 0.11448315913208877,
+    "independent": 0.11448315913208877
+   },
+   {
+    "alpha": 0.7,
+    "page": 0.1047969507641043,
+    "independent": 0.1047969507641043
+   },
+   {
+    "alpha": 0.85,
+    "page": 0.09002077155336492,
+    "independent": 0.09002077155336492
+   },
+   {
+    "alpha": 0.95,
+    "page": 0.07375030387909676,
+    "independent": 0.07375030387909676
+   }
+  ],
+  "testRecall": [
+   {
+    "method": "popularity",
+    "page": 0.07602291343770759,
+    "independent": 0.07602291343770759
+   },
+   {
+    "method": "pagerank",
+    "page": 0.07969324149418144,
+    "independent": 0.07969324149418144
+   },
+   {
+    "method": "ppr",
+    "page": 0.11218853219486066,
+    "independent": 0.11218853219486066
+   }
+  ],
+  "reportUserLists": [
+   {
+    "user": 655,
+    "method": "popularity",
+    "sameIds": true,
+    "maxScoreDiff": 0
+   },
+   {
+    "user": 655,
+    "method": "pagerank",
+    "sameIds": true,
+    "maxScoreDiff": 4.002104916998178e-10
+   },
+   {
+    "user": 655,
+    "method": "ppr",
+    "sameIds": true,
+    "maxScoreDiff": 9.006577661408929e-11
+   },
+   {
+    "user": 895,
+    "method": "popularity",
+    "sameIds": true,
+    "maxScoreDiff": 0
+   },
+   {
+    "user": 895,
+    "method": "pagerank",
+    "sameIds": true,
+    "maxScoreDiff": 3.664445476659478e-10
+   },
+   {
+    "user": 895,
+    "method": "ppr",
+    "sameIds": true,
+    "maxScoreDiff": 4.3110893836999925e-10
+   }
+  ]
+ }
+}

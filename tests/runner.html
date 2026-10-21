@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HW6 headless runner</title>
+</head>
+<body>
+<!--
+  Opens the real page (../index.html) in a same-origin iframe and drives it through its own
+  functions, exactly as the buttons do, then writes the outputs into the result element as JSON.
+  Serve hw6/ over http and open tests/runner.html?steps=checks,sweep,compare,lists,demo,export
+  Steps:
+    checks   build the graph and run the page's self-checks
+    sweep    validation alpha sweep (hw6RunAlphaSweep); sets the alpha slider to the selected value
+    compare  four-method test comparison (hw6RunComparison), trains the MF reference lazily
+    lists    test Top-10 lists of the report users for all four methods (users=655,895)
+    demo     the page's two-user demo plus the same three settings for the report users
+    export   serializeVerification / serializeResults / serializeRecommendations
+-->
+<pre id="result">PENDING</pre>
+<iframe id="app" src="../index.html" style="width:1200px;height:800px"></iframe>
+<script>
+const q = new URLSearchParams(location.search);
+const steps = (q.get('steps') || 'checks').split(',');
+const users = (q.get('users') || '655,895').split(',').map(Number);
+const out = { steps, log: [] };
+const done = (extra) => { Object.assign(out, extra || {}); document.getElementById('result').textContent = JSON.stringify(out); };
+
+function waitForApp(win, resolve) {
+  try {
+    if (win.eval('typeof HW6_STATE !== "undefined" && HW6_STATE.loaded')) return resolve();
+  } catch (e) { /* not ready yet */ }
+  setTimeout(() => waitForApp(win, resolve), 200);
+}
+
+document.getElementById('app').addEventListener('load', () => {
+  const win = document.getElementById('app').contentWindow;
+  const app = (code) => win.eval(code);
+  waitForApp(win, async () => {
+    try {
+      out.backend = app('HW6_STATE.backend');
+      out.tensorsAtStart = app('tf.memory().numTensors');
+      app('hw6HandleBuildGraph()');
+      const graph = app('getGraph()');
+      out.graph = !graph ? null : { nUsers: graph.nUsers, nMovies: graph.nMovies, nodeCount: graph.nodeCount,
+        positiveEdges: graph.positiveEdges, zeroDegreeUsers: graph.zeroDegreeUsers.length,
+        zeroDegreeMovies: graph.zeroDegreeMovies.length, zeroDegreeMovieIds: graph.zeroDegreeMovies };
+
+      if (steps.includes('tensors')) {
+        // Repeated propagation must not accumulate tensors (readme 3.5).
+        const t0 = app('tf.memory().numTensors');
+        for (let k = 0; k < 20; k++) { app('pageRank(0.85)'); app('personalizedPageRank(655, 0.5)'); }
+        const t1 = app('tf.memory().numTensors');
+        for (let k = 0; k < 20; k++) { app('pageRank(0.85)'); app('personalizedPageRank(895, 0.95)'); }
+        out.tensorCheck = { afterBuild: t0, after20: t1, after40: app('tf.memory().numTensors') };
+        await app('hw6EnsureMf()');
+        out.tensorCheck.afterProvidedMfTraining = app('tf.memory().numTensors');
+      }
+      if (steps.includes('pprtiming')) {
+        // Real work for external wall-clock timing: PPR for the first N test-cohort users.
+        const n = Number(q.get('n') || 100), a = Number(q.get('timingAlpha') || 0.5);
+        const cohort = app('hw6SharedCohort("test")').slice(0, n);
+        let iters = 0;
+        for (const u of cohort) iters += app(`personalizedPageRank(${u}, ${a})`).iterations;
+        out.pprTiming = { users: cohort.length, alpha: a, totalIterations: iters };
+      }
+      if (steps.includes('checks')) {
+        const r = app('runSelfChecks()');
+        out.checks = { passed: r.passed, failed: r.failed, pending: r.pending,
+          list: r.checks.map((c) => ({ name: c.name, status: c.status, detail: c.detail })) };
+      }
+      if (steps.includes('convergence')) {
+        out.convergence = [];
+        for (const a of [0.5, 0.7, 0.85, 0.95]) {
+          const pr = app(`pageRank(${a})`);
+          let mass = 0, min = Infinity; for (const x of pr.p) { mass += x; min = Math.min(min, x); }
+          out.convergence.push({ kind: 'pagerank', alpha: a, iterations: pr.iterations, residual: pr.residual, converged: pr.converged, mass, min });
+          for (const u of users) {
+            const r = app(`personalizedPageRank(${u}, ${a})`);
+            let m = 0, mn = Infinity; for (const x of r.p) { m += x; mn = Math.min(mn, x); }
+            out.convergence.push({ kind: 'ppr', user: u, alpha: a, iterations: r.iterations, residual: r.residual, converged: r.converged, mass: m, min: mn });
+          }
+        }
+      }
+      if (steps.includes('sweep')) {
+        const sweep = app('hw6RunAlphaSweep()');
+        out.sweep = { rows: sweep.rows, best: sweep.best, note: sweep.note };
+        app(`hw6SetAlpha(${sweep.best})`);
+      }
+      if (q.has('alpha')) app(`hw6SetAlpha(${Number(q.get('alpha'))})`);
+      out.alpha = app('hw6ReadAlpha()');
+      if (steps.includes('record')) {
+        // What the "Run PageRank" / "Run PPR" buttons do: store convergence records for the exports.
+        app(`hw6RunAndRecordConvergence("pagerank", getGraph(), ${out.alpha})`);
+        app(`hw6RunAndRecordConvergence("ppr", getGraph(), ${out.alpha}, ${users[0]})`);
+        out.recorded = JSON.parse(JSON.stringify(app('HW6_STATE.convergence')));
+      }
+      if (steps.includes('compare')) {
+        out.comparison = await app('hw6RunComparison("test")');
+        out.mfInfo = JSON.parse(JSON.stringify(app('MF_INFO')));
+      }
+      if (steps.includes('lists')) {
+        out.lists = {};
+        for (const u of users) {
+          out.lists[u] = {};
+          for (const m of ['popularity', 'pagerank', 'ppr', 'mf']) {
+            const recs = app(`recommendTopK("${m}", ${u}, 10, "test")`);
+            out.lists[u][m] = recs;
+            app(`hw6RecordRecommendationRows(${u}, "${m}", ${m === 'pagerank' || m === 'ppr' ? 'hw6ReadAlpha()' : 'null'}, recommendTopK("${m}", ${u}, 10, "test"))`);
+          }
+        }
+      }
+      if (steps.includes('demo')) {
+        const demo = app('hw6RunTwoUserDemo()');
+        out.pageDemo = { users: demo.users, common: demo.common, error: demo.error,
+          settings: demo.settings.map((s) => ({ label: s.label, user: s.user, alpha: s.alpha, recs: s.recs })) };
+        const [A, B] = users;
+        const settings = [['baseline', A, 0.85], ['change seed only', B, 0.85], ['change alpha only', A, 0.5]];
+        out.reportDemo = settings.map(([label, u, a]) => ({ label, user: u, alpha: a,
+          recs: app(`hw6WithAlpha(${a}, function () { return recommendTopK("ppr", ${u}, 10, "test"); })`) }));
+        out.reportDemo.forEach((s) => app(`hw6RecordRecommendationRows(${s.user}, "ppr", ${s.alpha}, ${JSON.stringify(s.recs)})`));
+      }
+      if (steps.includes('export')) {
+        out.verificationJson = app('serializeVerification()');
+        out.resultsCsv = app('serializeResults()');
+        out.recommendationsCsv = app('serializeRecommendations()');
+      }
+      out.tensorsAtEnd = app('tf.memory().numTensors');
+      done();
+    } catch (e) {
+      done({ error: String(e && e.stack ? e.stack : e) });
+    }
+  });
+});
+</script>
+</body>
+</html>

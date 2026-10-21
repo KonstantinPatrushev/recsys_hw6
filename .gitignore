@@ -1,0 +1,7 @@
+report/
+node_modules/
+*.jsonl
+session*.json
+.DS_Store
+evidence/run_final.json
+evidence/run_final.time.json

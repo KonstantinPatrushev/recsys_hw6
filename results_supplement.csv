@@ -1,0 +1,5 @@
+method,source,alpha,recall_at_10,cohort_size,mean_list_popularity
+popularity,tests/independent.mjs (float64),,0.07602291343770759,861,271.99686411149816
+pagerank,tests/independent.mjs (float64),0.50,0.07969324149418144,861,257.820325203252
+ppr,tests/independent.mjs (float64),0.50,0.11218853219486066,861,244.20673635307733
+mf_hw5,"tests/independent.mjs (float64); factors of the assignment 5 checkpoint, epoch 2, val RMSE 1.0088",,0.01751098588946886,861,43.50708478513361

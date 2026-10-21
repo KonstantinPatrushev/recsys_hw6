@@ -1,0 +1,135 @@
+{
+ "graph": {
+  "nUsers": 943,
+  "nMovies": 1611,
+  "nodes": 2554,
+  "positiveEdges": 45602,
+  "zeroDegreeUsers": 1,
+  "zeroDegreeMovies": 253
+ },
+ "sweep": [
+  {
+   "alpha": 0.5,
+   "recall": 0.11448315913208877
+  },
+  {
+   "alpha": 0.7,
+   "recall": 0.1047969507641043
+  },
+  {
+   "alpha": 0.85,
+   "recall": 0.09002077155336492
+  },
+  {
+   "alpha": 0.95,
+   "recall": 0.07375030387909676
+  }
+ ],
+ "selectedAlpha": 0.5,
+ "test": {
+  "popularity": {
+   "recall": 0.07602291343770759,
+   "cohort": 861,
+   "meanListPopularity": 271.99686411149816
+  },
+  "pagerank": {
+   "recall": 0.07969324149418144,
+   "cohort": 861,
+   "meanListPopularity": 257.820325203252
+  },
+  "ppr": {
+   "recall": 0.11218853219486066,
+   "cohort": 861,
+   "meanListPopularity": 244.20673635307733
+  },
+  "mf_hw5": {
+   "recall": 0.01751098588946886,
+   "cohort": 861,
+   "meanListPopularity": 43.50708478513361
+  }
+ },
+ "vsPage": {
+  "selectedAlpha": {
+   "page": 0.5,
+   "independent": 0.5
+  },
+  "sweep": [
+   {
+    "alpha": 0.5,
+    "page": 0.11448315913208877,
+    "independent": 0.11448315913208877
+   },
+   {
+    "alpha": 0.7,
+    "page": 0.1047969507641043,
+    "independent": 0.1047969507641043
+   },
+   {
+    "alpha": 0.85,
+    "page": 0.09002077155336492,
+    "independent": 0.09002077155336492
+   },
+   {
+    "alpha": 0.95,
+    "page": 0.07375030387909676,
+    "independent": 0.07375030387909676
+   }
+  ],
+  "testRecall": [
+   {
+    "method": "popularity",
+    "page": 0.07602291343770759,
+    "independent": 0.07602291343770759
+   },
+   {
+    "method": "pagerank",
+    "page": 0.07969324149418144,
+    "independent": 0.07969324149418144
+   },
+   {
+    "method": "ppr",
+    "page": 0.11218853219486066,
+    "independent": 0.11218853219486066
+   }
+  ],
+  "reportUserLists": [
+   {
+    "user": 655,
+    "method": "popularity",
+    "sameIds": true,
+    "maxScoreDiff": 0
+   },
+   {
+    "user": 655,
+    "method": "pagerank",
+    "sameIds": true,
+    "maxScoreDiff": 4.002104916998178e-10
+   },
+   {
+    "user": 655,
+    "method": "ppr",
+    "sameIds": true,
+    "maxScoreDiff": 9.006577661408929e-11
+   },
+   {
+    "user": 895,
+    "method": "popularity",
+    "sameIds": true,
+    "maxScoreDiff": 0
+   },
+   {
+    "user": 895,
+    "method": "pagerank",
+    "sameIds": true,
+    "maxScoreDiff": 3.664445476659478e-10
+   },
+   {
+    "user": 895,
+    "method": "ppr",
+    "sameIds": true,
+    "maxScoreDiff": 4.3110893836999925e-10
+   }
+  ]
+ }
+}
+exit 0

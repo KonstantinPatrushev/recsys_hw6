@@ -1,0 +1,14 @@
+error: 
+baseline checks: 2 passed 0 failed 10 pending
+  PENDING reference graph: uniform alpha=0.85 matches readme 4.1 values
+  PENDING reference graph: restart at A alpha=0.85 matches readme 4.1 values
+  PENDING row normalization: every nonzero-degree row sums to 1
+  PASS restart distributions: nonnegative and summing to 1
+  PENDING iterations preserve total probability (sum approx 1)
+  PENDING stationary scores are nonnegative
+  PENDING one extra update produces approximately the same distribution
+  PENDING zero-degree node fixture preserves probability mass
+  PENDING matrix orientation: probability collects at the pointed-to node, not the source
+  PENDING recommendTopK: excludes previously rated movies and breaks ties by ascending id
+  PENDING graph mapping: node count equals observed users plus observed movies
+  PASS public surface: every required name is defined

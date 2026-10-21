@@ -1,0 +1,162 @@
+{
+ "withinMethod": {
+  "popularity": 0,
+  "pagerank": 0,
+  "ppr": 0,
+  "mf": 3,
+  "mf_hw5": 2
+ },
+ "pprOverlap": {
+  "655": {
+   "popularity": 9,
+   "pagerank": 8,
+   "mf_hw5": 0
+  },
+  "895": {
+   "popularity": 5,
+   "pagerank": 7,
+   "mf_hw5": 1
+  }
+ },
+ "meanPopularity": {
+  "655": {
+   "popularity": 163.7,
+   "pagerank": 156.6,
+   "ppr": 162.3,
+   "mf": 48.6,
+   "mf_hw5": 9.8
+  },
+  "895": {
+   "popularity": 273.7,
+   "pagerank": 258.5,
+   "ppr": 242.1,
+   "mf": 96.1,
+   "mf_hw5": 101.2
+  }
+ },
+ "histories": {
+  "655": {
+   "trainRatings": 548,
+   "positive": 96,
+   "topGenres": [
+    [
+     "Drama",
+     64
+    ],
+    [
+     "Thriller",
+     17
+    ],
+    [
+     "Romance",
+     16
+    ],
+    [
+     "Action",
+     12
+    ]
+   ],
+   "fiveStar": [
+    "Safe (1995)",
+    "Fugitive, The (1993)",
+    "Killing Fields, The (1984)",
+    "Ma vie en rose (My Life in Pink) (1997)",
+    "Ruby in Paradise (1993)",
+    "Once Were Warriors (1994)",
+    "Angel Baby (1995)",
+    "Bonnie and Clyde (1967)",
+    "Annie Hall (1977)",
+    "Godfather, The (1972)"
+   ],
+   "years": [
+    "1998-02"
+   ]
+  },
+  "895": {
+   "trainRatings": 16,
+   "positive": 10,
+   "topGenres": [
+    [
+     "Romance",
+     5
+    ],
+    [
+     "Comedy",
+     4
+    ],
+    [
+     "Action",
+     3
+    ],
+    [
+     "Drama",
+     3
+    ]
+   ],
+   "fiveStar": [
+    "Mighty Aphrodite (1995)",
+    "Return of the Jedi (1983)",
+    "Sense and Sensibility (1995)",
+    "Star Wars (1977)"
+   ],
+   "years": [
+    "1997-11"
+   ]
+  }
+ },
+ "demo": {
+  "settings": [
+   {
+    "label": "baseline",
+    "user": 655,
+    "alpha": 0.85,
+    "meanPopularity": 163.5
+   },
+   {
+    "label": "change seed only",
+    "user": 895,
+    "alpha": 0.85,
+    "meanPopularity": 264.5
+   },
+   {
+    "label": "change alpha only",
+    "user": 655,
+    "alpha": 0.5,
+    "meanPopularity": 162.3
+   }
+  ],
+  "sharedWithBaseline": {
+   "changeSeed": 0,
+   "changeAlpha": 9
+  },
+  "changedByAlpha": {
+   "removed": [
+    "Bridge on the River Kwai, The (1957) (pop 117)"
+   ],
+   "added": [
+    "Big Night (1996) (pop 105)"
+   ]
+  },
+  "pageDemoUsers": [
+   1,
+   2
+  ],
+  "pageDemoCommon": [
+   {
+    "pair": "baseline vs change seed only",
+    "shared": 0,
+    "of": 10
+   },
+   {
+    "pair": "baseline vs change alpha only",
+    "shared": 7,
+    "of": 10
+   },
+   {
+    "pair": "change seed only vs change alpha only",
+    "shared": 0,
+    "of": 10
+   }
+  ]
+ }
+}
